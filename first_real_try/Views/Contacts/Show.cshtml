@@ -1,0 +1,41 @@
+﻿@model List<Feedback>
+@{
+	ViewData["Title"] = "Show all feedbacks";
+}
+
+<a class="btn" asp-asp-controller="Context" asp-action="Index">New feedback</a>
+ 
+
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Surname</th>
+			<th>Age</th>
+			<th>Email</th>
+			<th>Message</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach(var feedback in Model)
+		{
+			<tr>
+				<td>@feedback.Id</td>
+				<td>@feedback.Name</td>
+				<td>@feedback.Surname</td>
+				<td>@(feedback.Age)y.o.</td>
+				<td>@feedback.Email</td>
+				<td>@feedback.Message</td>
+				<td>
+					<a class="btn" asp-asp-controller="Contacts" asp-action="Edit"
+						asp-route-id="@feedback.Id">Edit</a>
+					<a class="btn" asp-asp-controller="Contacts" asp-action="Delete"
+						asp-route-id="@feedback.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
